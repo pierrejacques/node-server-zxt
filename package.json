@@ -1,0 +1,29 @@
+{
+  "name": "node-server",
+  "version": "1.0.0",
+  "description": "nodejs server for zhongxiaotuan.com",
+  "main": "app.js",
+  "private": true,
+  "scripts": {
+    "start": "node ./bin/www",
+    "serve": "pm2 start ./bin/www; pm2 list --watch"
+  },
+  "dependencies": {
+    "body-parser": "~1.18.2",
+    "cookie-parser": "~1.4.3",
+    "csprng": "^0.1.2",
+    "debug": "~2.6.9",
+    "express": "~4.15.5",
+    "ipa.js": "^1.4.0",
+    "jade": "^1.11.0",
+    "js-md5": "^0.7.3",
+    "mocha": "^5.0.1",
+    "mongodb": "^3.0.4",
+    "mongoose": "^5.0.9",
+    "morgan": "~1.9.0"
+  },
+  "engines": {
+    "node": ">= 6.0.0",
+    "npm": ">= 3.0.0"
+  }
+}
