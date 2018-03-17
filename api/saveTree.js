@@ -23,6 +23,7 @@ module.exports = async function (req, res, next) {
                 0: '没有该用户',
                 1: '保存成功'
             }[result],
+            result,
         })
     } else {
         res.send({
