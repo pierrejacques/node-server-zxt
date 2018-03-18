@@ -24,7 +24,10 @@ module.exports = async function (req, res, next) {
         user.trees.forEach((_id, idx) => {
             db.findTree(_id).then(tree => {
                 count ++;
-                treeInfos[idx] = moment(tree.createOn).format('YYYY-MM-DD hh:mm:ss');
+                treeInfos[idx] = {
+                    createdOn: moment(tree.createOn).format('YYYY-MM-DD hh:mm:ss'),
+                    _id,
+                };
                 if (count === num) {
                     resolve();
                 }
