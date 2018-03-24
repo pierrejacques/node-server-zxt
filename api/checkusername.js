@@ -1,4 +1,4 @@
-const IPA = require('ipa.js').default;
+const IPA = require('ipa.js');
 const db = require('../database')();
 
 /* GET */
