@@ -1,12 +1,12 @@
-var express = require('express');
-var path = require('path');
-var logger = require('morgan');
-var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
-const db = require('./database')();
+const express = require('express');
+const path = require('path');
+const logger = require('morgan');
+const cookieParser = require('cookie-parser');
+const bodyParser = require('body-parser');
 const getExpire = require('./lib/getExpire');
 
-var api = require('./api');
+const treeApi = require('./api/tree');
+const bananaApi = require('./api/banana');
 
 var app = express();
 
@@ -14,6 +14,7 @@ var app = express();
 app.set('views', path.join(__dirname, 'views'));
 app.set('view engine', 'jade');
 
+app.use('/favicon.ico', () => false);
 app.use(logger('dev'));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -31,7 +32,8 @@ app.use('/', async function(req, res, next) {
   next();
 })
 
-app.use('/api', api);
+app.use('/api', treeApi);
+app.use('/api/banana', bananaApi);
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {

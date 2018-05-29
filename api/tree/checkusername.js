@@ -1,5 +1,5 @@
 const IPA = require('ipa.js');
-const db = require('../database')();
+const db = require('../../database/tree')();
 
 /* GET */
 

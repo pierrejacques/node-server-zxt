@@ -1,5 +1,5 @@
 const moment = require('moment');
-const db = require('../database')();
+const db = require('../../database/tree')();
 
 /* GET */
 

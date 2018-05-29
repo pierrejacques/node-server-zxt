@@ -1,6 +1,6 @@
 const IPA = require('ipa.js');
-const db = require('../database')();
-const getExpire = require('../lib/getExpire');
+const db = require('../../database/tree')();
+const getExpire = require('../../lib/getExpire');
 
 /* POST */
 
