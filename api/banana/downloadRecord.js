@@ -2,9 +2,11 @@ const db = require('../../database/banana')();
 
 /* GET */
 
+// TODO: 下载记录
+
 module.exports = async function (req, res, next) {
-    const data = await db.getComponents();
-    if (!data) {
+    const allrecord = await db.getRecords();
+    if (!allrecord) {
         res.status = 500;
         res.send({
             code: 500,
@@ -16,10 +18,7 @@ module.exports = async function (req, res, next) {
         res.send({
             code: 200,
             msg: null,
-            data: data.map(item => ({
-                name: item.name,
-                unit: item.unit,
-            })),
+            data: allrecord,
         });
     }
 }
