@@ -30,7 +30,7 @@ npm manifest:
       "csprng": "^0.1.2",
       "debug": "~2.6.9",
       "express": "~4.15.5",
-      "ipa.js": "^3.1.0-beta",
+      "ipa.js": "^3.2.0",
       "jade": "^1.11.0",
       "mocha": "^5.0.1",
       "moment": "^2.21.0",
@@ -405,9 +405,9 @@ Lockfile:
     version "2.0.3"
     resolved "http://registry.npm.taobao.org/inherits/download/inherits-2.0.3.tgz#633c2c83e3da42a502f52466022480f4208261de"
   
-  ipa.js@^3.1.0-beta:
-    version "3.1.0-beta"
-    resolved "http://registry.npm.taobao.org/ipa.js/download/ipa.js-3.1.0-beta.tgz#cfc1e9e4326fca6effead43b9564cea90a76e610"
+  ipa.js@^3.2.0:
+    version "3.2.0"
+    resolved "https://registry.npmjs.org/ipa.js/-/ipa.js-3.2.0.tgz#09b6481fbb2fee486b097abb8d790fcbe6aab2f5"
     dependencies:
       lodash "^4.17.5"
   

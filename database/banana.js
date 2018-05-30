@@ -5,6 +5,18 @@ const Schema = mongoose.Schema;
 const URI = 'mongodb://localhost:27017/db';
 
 const types = [{
+    id: 0,
+    name: '数据',
+    checker: new IPA({
+        date: String,
+        components: [{
+            name: String,
+            unit: String,
+            amount: Number,
+        }],
+        message: or(String, From(undefined, null)),
+    })
+}, {
     id: 1,
     name: '进食',
     checker: new IPA({
@@ -85,7 +97,7 @@ class Database {
 
     createRecord(data) {
         return new Promise((resolve) => {
-            if (!data || !data.type) {
+            if (!data || !Number.isInteger(data.type)) {
                 resolve(false);
             }
             const type = types.find(i => i.id === data.type);

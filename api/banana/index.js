@@ -3,11 +3,13 @@ const getRecord = require('./getRecord');
 const getComponent = require('./getComponent');
 const createRecord = require('./createRecord');
 const createComponent = require('./createComponent');
+const getStatisticTypes = require('./getStatisticTypes');
 
 router.get('/record/get', getRecord);
 router.post('/record/create', createRecord);
 router.get('/component/get', getComponent);
 router.get('/component/create', createComponent);
+router.get('/statistic/type/get', getStatisticTypes);
 
 module.exports = router;
 
