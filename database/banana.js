@@ -55,6 +55,7 @@ const types = [{
         message: String,
     }),
 }];
+
 const recordSchema = new Schema({
     type: Number,
     date: Date,
@@ -142,11 +143,11 @@ class Database {
     }
 
     getRecords(query = {}) {
-        return this.Records.find(query);
+        return this.Records.find(query).lean();
     }
 
     getComponents() {
-        return this.Components.find({});
+        return this.Components.find({}).lean();
     }
 
     $$delete(model, query) {

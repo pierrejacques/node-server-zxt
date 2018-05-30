@@ -1,3 +1,4 @@
+const IPA = require('ipa.js');
 const db = require('../../database/banana')();
 
 /* GET */
@@ -17,6 +18,16 @@ module.exports = async function (req, res, next) {
         res.status = 200;
         const nextIndex = +index + amount;
         const recordList = allrecord.slice(+index, nextIndex);
+        recordList.forEach(item => {
+            item.id = item._id;
+            delete item._id;
+            delete item.__v;
+            if (item.components) {
+                item.components.forEach(comp => {
+                    delete comp._id;
+                });
+            }
+        });
         const reachEnd = nextIndex >= allrecord.length;
         res.send({
             code: 200,
