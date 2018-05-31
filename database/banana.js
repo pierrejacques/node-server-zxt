@@ -76,12 +76,9 @@ const componentStruct = {
 const componentSchema = new Schema(componentStruct);
 const componentChecker = new IPA(componentStruct);
 
-const locationStruct = {
+const locationSchema = new Schema({
     name: String,
-    address: String,
-};
-const locationSchema = new Schema(locationStruct);
-const locationChecker = new IPA(locationStruct);
+});
 
 class Database {
     constructor() {
@@ -94,27 +91,28 @@ class Database {
         this.Records = mongoose.model('Records', recordSchema);
         this.Locations = mongoose.model('Location', locationSchema);
         this.Components = mongoose.model('Components', componentSchema);
+        this.Locations =  mongoose.model('Locations', locationSchema);
     }
 
-    createRecord(data) {
-        return new Promise((resolve) => {
-            if (!data || !Number.isInteger(data.type)) {
-                resolve(false);
-            }
-            const type = types.find(i => i.id === data.type);
-            if (!type || !type.checker.check(data)) {
-                resolve(false);
-            }
-            const date = new Date(data.date);
-            if (isNaN(+date)) {
-                resolve(false);
-            }
-            data.date = date;
-            this.Records.create(data, (err, result) => {
-                if (err) resolve(false);
-                resolve(result);
+    async createRecord(data) {
+        if (!data || !Number.isInteger(data.type)) {
+            return false;
+        }
+        const type = types.find(i => i.id === data.type);
+        if (!type || !type.checker.check(data)) {
+            return false;
+        }
+        const date = new Date(data.date);
+        if (isNaN(+date)) {
+            resolve(false);
+        }
+        data.date = date;
+        if (data.location) {
+            await this.Locations.create({
+                name: data.location
             });
-        });
+        }
+        return this.Records.create(data);
     }
 
     async createComponent(data) {
