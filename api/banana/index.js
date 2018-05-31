@@ -18,6 +18,3 @@ router.get('/statistic/type/get', getStatisticTypes);
 router.get('/location/suggest/get', getLocation);
 
 module.exports = router;
-
-// TODO: record导出
-// TODO: record导入
