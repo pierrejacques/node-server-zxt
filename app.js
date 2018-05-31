@@ -1,3 +1,5 @@
+require('./lib/ipa.declare');
+
 const express = require('express');
 const path = require('path');
 const logger = require('morgan');
@@ -30,7 +32,7 @@ app.use('/', async function(req, res, next) {
     });
   }
   next();
-})
+});
 
 app.use('/api', treeApi);
 app.use('/api/banana', bananaApi);

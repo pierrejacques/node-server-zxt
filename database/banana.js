@@ -142,14 +142,6 @@ class Database {
         });
     }
 
-    getRecords(query = {}) {
-        return this.Records.find(query).lean();
-    }
-
-    getComponents() {
-        return this.Components.find({}).lean();
-    }
-
     $$delete(model, query) {
         return this[model].deleteMany(query);
     }

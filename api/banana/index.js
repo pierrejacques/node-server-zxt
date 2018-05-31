@@ -17,6 +17,5 @@ router.get('/statistic/type/get', getStatisticTypes);
 
 module.exports = router;
 
-// TODO: record按时间范围查询
 // TODO: record导出
 // TODO: record导入

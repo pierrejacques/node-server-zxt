@@ -3,7 +3,7 @@ const db = require('../../database/banana')();
 /* GET */
 
 module.exports = async function (req, res, next) {
-    const data = await db.getComponents();
+    const data = await db.Components.find({}).lean();
     if (!data) {
         res.status = 500;
         res.send({
