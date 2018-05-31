@@ -5,8 +5,8 @@ const db = require('../../database/banana')();
 /* GET */
 
 const querySchema = new IPA({
-    index: assemble(IPA.getInstance('looseStr'), 0),
-    amount: assemble(IPA.getInstance('looseStr'), 10),
+    index: assemble(IPA.getInstance('looseStr'), IPA.getInstance('looseInt')),
+    amount: assemble(IPA.getInstance('looseStr'), IPA.getInstance('looseInt')),
     from: IPA.getInstance('looseDateStr'),
     to: IPA.getInstance('looseDateStr'),
     type: IPA.getInstance('encodeTypeArr'),
@@ -21,7 +21,9 @@ module.exports = async function (req, res, next) {
             msg: '参数错误',
         });
     }
-    const { index, amount, from, to, type } = querySchema.guarantee(req.query);
+    const { index = 0, amount = 10, from, to, type } = querySchema.guarantee(req.query);
+    console.log('index:', index);
+    console.log('amount:', amount);
     const query = {};
     if (from || to) {
         query.date = {};
