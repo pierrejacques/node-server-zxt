@@ -3,7 +3,7 @@ const db = require('../../database/banana')();
 /* GET */
 
 module.exports = async function (req, res, next) {
-    const { name } = req.query;
+    const name = String(req.query.name).trim();
     const query = {};
     if (name) {
         query.name = new RegExp(name, 'i');
