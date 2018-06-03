@@ -8,7 +8,7 @@ import deleteComponent from './deleteComponent';
 import getStatisticTypes from './getStatisticTypes';
 import getLocation from './getLocation';
 
-const router = new Router();
+const router = Router();
 
 router.get('/record/get', getRecord);
 router.post('/record/create', createRecord);

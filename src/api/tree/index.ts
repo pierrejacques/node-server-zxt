@@ -1,12 +1,14 @@
-const router from 'express').Router()
-const regist from './regist');
-const checkusername from './checkusername');
-const login from './login');
-const saveTree from './saveTree');
-const userinfo from './userinfo');
-const latestTree from './latestTree');
-const logout from './logout');
-const gethistory from './gethistory');
+import { Router } from 'express';
+import regist from './regist';
+import checkusername from './checkusername';
+import login from './login';
+import saveTree from './saveTree';
+import userinfo from './userinfo';
+import latestTree from './latestTree';
+import logout from './logout';
+import gethistory from './gethistory';
+
+const router = Router();
 
 router.get('/userinfo', userinfo);
 router.get('/checkusername', checkusername);
