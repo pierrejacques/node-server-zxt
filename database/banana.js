@@ -112,36 +112,19 @@ class Database {
                 name: data.location
             });
         }
-        return this.Records.create(data);
-    }
-
-    async createComponent(data) {
-        const exist = await this.Components.findOne({ name: data.name });
-        if (exist) return {
-            msg: '已存在相同成分',
-            result: false,
-        }
-        return new Promise((resolve) => {
-            if (!componentChecker.check(data)) {
-                resolve({
-                    result: false,
-                    msg: '数据格式错误',
-                });
-            }
-            this.Components.create(data, (err, result) => {
-                if (err) resolve({
-                    result: false,
-                    msg: '查询错误',
-                });
-                resolve({
-                    result: true,
-                });
+        if (data.components) {
+            const allComps = await this.Components.find({});
+            const newComps = [];
+            data.components.forEach(comp => {
+                if (!allComps.find(i => i.name === comp.name)) {
+                    newComps.push(comp);
+                }
             });
-        });
-    }
-
-    $$delete(model, query) {
-        return this[model].deleteMany(query);
+            if (newComps.length) {
+                await this.Components.insertMany(newComps)
+            }
+        }
+        return this.Records.create(data);
     }
 }
 

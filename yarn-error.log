@@ -885,7 +885,7 @@ Trace:
   Exit code: 1
   Command: sh
   Arguments: -c node ./bin/www
-  Directory: /Users/jinchenhao/Documents/codes/deploy/node-server
+  Directory: /Users/jinchenhao/Documents/codes/com.zhongxiaotuan/node-server
   Output:
   
       at ProcessTermError.MessageError (/Users/jinchenhao/.yarn/lib/cli.js:186:110)

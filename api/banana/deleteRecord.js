@@ -4,7 +4,7 @@ const db = require('../../database/banana')();
 
 module.exports = async function (req, res, next) {
     const { id } = req.query;
-    const { n } = await db.$$delete('Records', { _id: id });
+    const { n } = await db.Records.deleteMany({ _id: id });
     res.status = 200;
     res.send({
         code: 200,
