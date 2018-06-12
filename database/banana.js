@@ -2,7 +2,7 @@ const mongoose = require('mongoose');
 const IPA = require('ipa.js');
 const { or, From } = IPA;
 const Schema = mongoose.Schema;
-const URI = 'mongodb://localhost:27017/db';
+const connector = require('./connector');
 
 const types = [{
     id: 0,
@@ -82,11 +82,7 @@ const locationSchema = new Schema({
 
 class Database {
     constructor() {
-        mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
-        mongoose.connection.once('open', () => {
-            console.log(`connected to Mongod Database @${URI}`);
-        });
-        mongoose.connect(URI);
+        connector.connect();
         this.types = types;
         this.Records = mongoose.model('Records', recordSchema);
         this.Locations = mongoose.model('Location', locationSchema);

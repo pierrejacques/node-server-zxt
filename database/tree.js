@@ -3,8 +3,8 @@ const crypto = require('crypto')
 const mongoose = require('mongoose');
 const Schema = mongoose.Schema;
 const getExpire = require('../lib/getExpire');
-const URI = 'mongodb://localhost:27017/db';
 const CACHE_SIZE = 10;
+const connector = require('./connector');
 
 const userSchema = new Schema({
     username: String,
@@ -23,11 +23,7 @@ const treeSchema = new Schema({
 
 class Database {
     constructor() {
-        mongoose.connection.on('error', console.error.bind(console, 'connection error:'));
-        mongoose.connection.once('open', () => {
-            console.log(`connected to Mongod Database @${URI}`);
-        });
-        mongoose.connect(URI);
+        connector.connect();
         this.Users = mongoose.model('users', userSchema);
         this.Trees = mongoose.model('trees', treeSchema);
     }

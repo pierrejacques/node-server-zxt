@@ -10,6 +10,7 @@ const setCORS = require('./lib/setCORS');
 
 const treeApi = require('./api/tree');
 const bananaApi = require('./api/banana');
+const monitorApi = require('./api/monitor');
 
 var app = express();
 
@@ -35,7 +36,9 @@ app.use('/', async function(req, res, next) {
   next();
 });
 
-app.use('/api/banana', setCORS);
+app.use('/api/monitor', setCORS);
+app.use('/api/monitor', monitorApi);
+
 app.use('/api/banana', bananaApi);
 
 app.use('/api', treeApi);
