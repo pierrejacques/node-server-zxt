@@ -6,6 +6,7 @@ const connector = require('./connector');
 
 const checker = new IPA({
     type: From('PageView', 'ModuleClick'),
+    isProd: Boolean,
     info: {
         pageId: String,
         elementId: or(String, From(undefined, null)),
@@ -15,6 +16,7 @@ const checker = new IPA({
 
 const schema = new Schema({
     type: String,
+    isProd: Boolean,
     info: {
         pageId: String,
         elementId: String,
