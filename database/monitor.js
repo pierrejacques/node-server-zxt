@@ -10,7 +10,7 @@ const checker = new IPA({
     info: {
         pageId: String,
         elementId: or(String, From(undefined, null)),
-        payload: Object,
+        payload: or(Object, From(undefined, null)),
     },
 });
 
