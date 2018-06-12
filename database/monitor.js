@@ -5,6 +5,7 @@ const Schema = mongoose.Schema;
 const connector = require('./connector');
 
 const checker = new IPA({
+    stamp: Number,
     type: From('PageView', 'ModuleClick'),
     isProd: Boolean,
     info: {
@@ -15,6 +16,7 @@ const checker = new IPA({
 });
 
 const schema = new Schema({
+    stamp: Number,
     type: String,
     isProd: Boolean,
     info: {
